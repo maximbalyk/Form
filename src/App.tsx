@@ -27,14 +27,13 @@ export const App: React.FC = () => {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
 
-  // const emailValidator = (clientEmail: string) => {
-  // eslint-disable-next-line max-len
-  //   const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  const emailValidator = (clientEmail: string) => {
+    const re = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
 
-  //   return re.test(clientEmail);
-  // };
+    return re.test(clientEmail);
+  };
 
-  const isEmailValid = true;
+  const isEmailValid = emailValidator(email);
 
   // eslint-disable-next-line no-console
   console.log(email, password, passwordConfirm);
