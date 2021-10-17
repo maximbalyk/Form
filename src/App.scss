@@ -54,6 +54,7 @@
     background-color: #fff;
     box-sizing: border-box;
     border-radius: 16px;
+    transition: 500ms;
 
     &--text{
       font-family: Montserrat;
@@ -76,6 +77,12 @@
       border-radius: 16px;
       border: 2px solid #3C9C41;
     }
+  }
+
+  &__button:hover{
+
+    transform: scale(1.1);
+    transition: 500ms;
   }
 
   &__input {
