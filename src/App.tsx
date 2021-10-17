@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import './App.scss';
@@ -148,14 +149,14 @@ export const App: React.FC = () => {
         <div className="d-inline-flex">
           <p>
             Already have an account?
-            <a href="1" className="link-success"> Log In</a>
+            <a href="#" className="link-success"> Log In</a>
           </p>
 
         </div>
         <div className="d-inline-flex">
           <p>
             Review privacy and disclosures
-            <a href="2" className="link-success"> here</a>
+            <a href="#" className="link-success"> here</a>
           </p>
         </div>
       </footer>
