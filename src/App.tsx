@@ -50,7 +50,7 @@ export const App: React.FC = () => {
   return (
     <div className="App">
       <header className="header">
-        <img src="/icon.svg" alt="icon" />
+        <img src="/icon.png" alt="icon" />
         <h1 className="header__title">Sign Up with email</h1>
       </header>
 
