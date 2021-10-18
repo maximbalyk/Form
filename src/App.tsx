@@ -1,8 +1,10 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import classNames from 'classnames';
 
 interface Props {
   onClick: () => void;
@@ -28,6 +30,9 @@ export const App: React.FC = () => {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [gender, setGender] = useState('');
+  const [hidePassword, setHidePassword] = useState(true);
+
+  console.log(hidePassword);
 
   const emailValidator = (clientEmail: string) => {
     const re = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
@@ -57,14 +62,14 @@ export const App: React.FC = () => {
         <h1 className="header__title">Sign Up with email</h1>
       </header>
 
-      <form method="post">
+      <form method="post" className="form">
 
-        <div className="d-flex flex-column">
+        <div className="d-flex flex-column align">
           <h2 className="form__title">Gender</h2>
           <div className="form__group" role="group" aria-label="Basic example">
             <button
               type="button"
-              className="form__button"
+              className={gender === 'Male' ? 'form__button form__button--active' : 'form__button'}
               onClick={() => setGender('Male')}
             >
               <img src="./male.png" alt="male_icon" />
@@ -72,7 +77,7 @@ export const App: React.FC = () => {
             </button>
             <button
               type="button"
-              className="form__button"
+              className={gender === 'Female' ? 'form__button form__button--active' : 'form__button'}
               onClick={() => setGender('Female')}
             >
               <img src="./female.png" alt="female_icon" />
@@ -80,7 +85,7 @@ export const App: React.FC = () => {
             </button>
             <button
               type="button"
-              className="form__button"
+              className={gender === 'Other' ? 'form__button form__button--active' : 'form__button'}
               onClick={() => setGender('Other')}
             >
               <img src="./other.png" alt="other_icon" />
@@ -109,13 +114,20 @@ export const App: React.FC = () => {
             Create Password
             <input
               value={password}
-              type="password"
+              type={hidePassword ? 'password' : 'text'}
               name="password"
               className="form-control"
               id="exampleInputPassword1"
               onChange={e => setPassword(e.target.value)}
               required
             />
+            <button
+              type="button"
+              className="form__button--showPassword"
+              onClick={() => setHidePassword(!hidePassword)}
+            >
+              <img src="./eye.svg" alt="showPassword" />
+            </button>
             {!isPasswordValid && password.length !== 0 ? renderError('Password not valid') : null}
           </label>
         </div>
@@ -125,12 +137,19 @@ export const App: React.FC = () => {
             Confirm Password
             <input
               value={passwordConfirm}
-              type="password"
+              type={hidePassword ? 'password' : 'text'}
               className="form-control"
               id="exampleInputPassword1"
               onChange={e => setPasswordConfirm(e.target.value)}
               required
             />
+            <button
+              type="button"
+              className="form__button--showPassword"
+              onClick={() => setHidePassword(!hidePassword)}
+            >
+              <img src="./eye.svg" alt="showPassword" />
+            </button>
             {!isConfirmValid && password.length !== 0 ? renderError('Confirm password not valid') : null}
           </label>
         </div>
@@ -142,7 +161,7 @@ export const App: React.FC = () => {
             // eslint-disable-next-line no-alert
             alert(alertMessage);
           }}
-          disabled={!isGenderValid && !isEmailValid && !isPasswordValid && !isConfirmValid}
+          disabled={!isGenderValid || !isEmailValid || !isPasswordValid || !isConfirmValid}
         >
           Submit
         </button>
