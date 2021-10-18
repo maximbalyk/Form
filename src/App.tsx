@@ -50,7 +50,10 @@ export const App: React.FC = () => {
   return (
     <div className="App">
       <header className="header">
-        <img src="/icon.png" alt="icon" />
+        <img
+          src="/icon.png"
+          alt="icon"
+        />
         <h1 className="header__title">Sign Up with email</h1>
       </header>
 
@@ -64,7 +67,7 @@ export const App: React.FC = () => {
               className="form__button"
               onClick={() => setGender('Male')}
             >
-              <img src="/male.png" alt="" />
+              <img src="/male.png" alt="male_icon" />
               <h3 className="form__button--text">Male</h3>
             </button>
             <button
@@ -72,7 +75,7 @@ export const App: React.FC = () => {
               className="form__button"
               onClick={() => setGender('Female')}
             >
-              <img src="/female.png" alt="" />
+              <img src="/female.png" alt="female_icon" />
               Female
             </button>
             <button
@@ -80,7 +83,7 @@ export const App: React.FC = () => {
               className="form__button"
               onClick={() => setGender('Other')}
             >
-              <img src="/other.png" alt="" />
+              <img src="/other.png" alt="other_icon" />
               Other
             </button>
           </div>
