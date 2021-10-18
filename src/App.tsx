@@ -20,7 +20,7 @@ export const Provider: React.FC<Props> = React.memo(
 );
 
 const renderError = (errorMessage: {} | null | undefined) => (
-  <span>{errorMessage}</span>
+  <span className="errorMessage">{errorMessage}</span>
 );
 
 export const App: React.FC = () => {

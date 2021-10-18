@@ -26,6 +26,10 @@
   }
 }
 
+.errorMessage {
+  color: red;
+}
+
 .form {
 
   &__title{
@@ -77,6 +81,16 @@
       border-radius: 16px;
       border: 2px solid #3C9C41;
     }
+
+    &--singUp:hover {
+      background : #4DB252;
+      border: 2px solid #4DB252;
+    }
+
+    &--singUp:focus {
+      background : #318636;
+      border: 2px solid #318636;
+    }
   }
 
   &__button:hover{
@@ -85,8 +99,14 @@
     transition: 500ms;
   }
 
+  &__button:focus {
+    color : #3C9C41;
+    border: 2px solid #3C9C41;
+  }
+
   &__input {
     display: flex;
     flex-direction: column;
   }
 }
+
