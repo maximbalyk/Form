@@ -1,10 +1,7 @@
-/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import classNames from 'classnames';
 
 interface Props {
   onClick: () => void;
@@ -31,8 +28,6 @@ export const App: React.FC = () => {
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [gender, setGender] = useState('');
   const [hidePassword, setHidePassword] = useState(true);
-
-  console.log(hidePassword);
 
   const emailValidator = (clientEmail: string) => {
     const re = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
@@ -73,7 +68,11 @@ export const App: React.FC = () => {
               onClick={() => setGender('Male')}
             >
               <img src="./male.png" alt="male_icon" />
-              <h3 className="form__button--text">Male</h3>
+              <h3
+                className={gender === 'Male' ? 'form__button--text form__button--text--selected' : 'form__button--text'}
+              >
+                Male
+              </h3>
             </button>
             <button
               type="button"
@@ -158,10 +157,14 @@ export const App: React.FC = () => {
           type="button"
           className="form__button--singUp"
           onClick={() => {
-            // eslint-disable-next-line no-alert
-            alert(alertMessage);
+            if (isGenderValid && isEmailValid && isPasswordValid && isConfirmValid) {
+              // eslint-disable-next-line no-alert
+              alert(alertMessage);
+            } else {
+              // eslint-disable-next-line no-alert
+              alert('Fill in all the fields');
+            }
           }}
-          disabled={!isGenderValid || !isEmailValid || !isPasswordValid || !isConfirmValid}
         >
           Submit
         </button>
