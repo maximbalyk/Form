@@ -3,21 +3,6 @@ import React, { useState } from 'react';
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-interface Props {
-  onClick: () => void;
-}
-
-export const Provider: React.FC<Props> = React.memo(
-  ({ onClick, children }) => (
-    <button
-      type="button"
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  ),
-);
-
 const renderError = (errorMessage: {} | null | undefined) => (
   <span className="errorMessage">{errorMessage}</span>
 );
